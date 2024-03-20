@@ -3,6 +3,7 @@ package com.auth0.android.request
 import androidx.annotation.VisibleForTesting
 import com.auth0.android.request.internal.GsonProvider
 import com.google.gson.Gson
+import io.github.rotbolt.flakerokhttpcore.FlakerInterceptor
 import okhttp3.*
 import okhttp3.Headers.Companion.toHeaders
 import okhttp3.HttpUrl.Companion.toHttpUrl
@@ -97,6 +98,9 @@ public class DefaultClient @VisibleForTesting(otherwise = VisibleForTesting.PRIV
             builder.addInterceptor(logger)
         }
 
+        // Flaker
+        
+        builder.addInterceptor(FlakerInterceptor.Builder().build())
         // timeouts
         builder.connectTimeout(connectTimeout.toLong(), TimeUnit.SECONDS)
         builder.readTimeout(readTimeout.toLong(), TimeUnit.SECONDS)
