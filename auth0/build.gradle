@@ -134,4 +134,7 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.6.1'
     testImplementation 'androidx.test.espresso:espresso-intents:3.5.1'
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+
+    debugImplementation("io.github.rotbolt:flaker-android-okhttp:0.1.2")
+    releaseImplementation("io.github.rotbolt:flaker-android-okhttp-noop:0.1.2")
 }
