@@ -24,7 +24,8 @@
 
 plugins {
     id 'kotlin-android'
-    id "com.auth0.gradle.oss-library.android" version "0.18.0"
+    //id "com.auth0.gradle.oss-library.android" version "0.18.0"
+    id 'com.android.library'
     id "org.jetbrains.dokka" version "1.4.20"
 }
 
@@ -33,28 +34,28 @@ logger.lifecycle("Using version ${version} for ${name}")
 def signingKey = findProperty('signingKey')
 def signingKeyPwd = findProperty('signingPassword')
 
-oss {
-    name 'Auth0.Android'
-    repository 'Auth0.Android'
-    organization 'auth0'
-    description 'Android toolkit for Auth0 API'
-    skipAssertSigningConfiguration true
+// oss {
+//     name 'Auth0.Android'
+//     repository 'Auth0.Android'
+//     organization 'auth0'
+//     description 'Android toolkit for Auth0 API'
+//     skipAssertSigningConfiguration true
 
-    developers {
-        auth0 {
-            displayName = 'Auth0'
-            email = 'oss@auth0.com'
-        }
-        lbalmaceda {
-            displayName = 'Luciano Balmaceda'
-            email = 'luciano.balmaceda@auth0.com'
-        }
-    }
-}
+//     developers {
+//         auth0 {
+//             displayName = 'Auth0'
+//             email = 'oss@auth0.com'
+//         }
+//         lbalmaceda {
+//             displayName = 'Luciano Balmaceda'
+//             email = 'luciano.balmaceda@auth0.com'
+//         }
+//     }
+// }
 
-signing {
-    useInMemoryPgpKeys(signingKey, signingKeyPwd)
-}
+// signing {
+//     useInMemoryPgpKeys(signingKey, signingKeyPwd)
+// }
 
 android {
     compileSdkVersion 31
@@ -103,10 +104,10 @@ ext {
 
 // Configure javadoc jar to use dokka output
 // TODO update oss-plugin to use dokka instead of doing it here
-javadocJar {
-    dependsOn "dokkaJavadoc"
-    from "$buildDir/dokka/javadoc"
-}
+// javadocJar {
+//     dependsOn "dokkaJavadoc"
+//     from "$buildDir/dokka/javadoc"
+// }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
